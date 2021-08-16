@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+//elementos para usar REACT.ROUTER-DOM
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-function App() {
+//mis componentes
+import ItemList from "./components/ItemList";
+import ItemDetailContainer from "./components/ItemDetailConteiner";
+import Cart from './components/Cart'
+import FormCart from "./components/FormCart";
+import './App.css'
+//importo mi ContextProvider para rodear toda mi app y que pueda usar su info en los componentes encerrados dentro
+import CartContextProvider from './store/CartContext';
+import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    /* //CONTEXT */
+    <div className = "App">
+        <CartContextProvider>
+          {/* //ROUTER */}
+          <BrowserRouter>
+            <NavBar exact path ="/"></NavBar>
+            <Switch>
+              <Route exact path="/" component={ItemList} />
+              <Route path="/categoria/:id" component={ItemList} />
+              <Route path="/item/:id" component={ItemDetailContainer} />
+              <Route path="/cart" component={Cart} />
+              <Route path="/compra" component={FormCart} />
+            </Switch>
+           <Footer></Footer>
+          </BrowserRouter>
+        </CartContextProvider>
     </div>
   );
 }
-
-export default App;
