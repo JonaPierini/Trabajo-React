@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../store/CartContext";
 const Cart = () => {
   const { cart } = useContext(CartContext);
+  const {clear} = useContext(CartContext)
+
   return (
     <div>
       <Link to="/">Volver</Link>
@@ -15,6 +17,7 @@ const Cart = () => {
         <Link to="/compra">
           Finalizar compra
         </Link>
+        <button onClick = {clear} >Vaciar Carrito</button>
       </div>
     </div>
   );
