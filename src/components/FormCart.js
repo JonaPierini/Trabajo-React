@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { CartContext } from "../store/CartContext";
 import { database } from "../firebase/config";
 import firebase from 'firebase/app'
+import { Link } from "react-router-dom";
 
 export default function FormCart() {
   const { cart } = useContext(CartContext);
@@ -16,7 +17,7 @@ export default function FormCart() {
     e.preventDefault();
 
     const ventas = database.collection("ventas");
-    const productos = database.collection("productos");
+    const productos = database.collection("peliculas");
 
     ventas
       .add({
@@ -34,6 +35,7 @@ export default function FormCart() {
         console.log(refDoc.id);
       });
   };
+
   return (
     <div>
       <h2>Finalizar compra</h2>
@@ -47,10 +49,13 @@ export default function FormCart() {
             type="nombre"
           />
         </div>
-
+         
         <button type="submit">
-          Comprar
+                Comprar
         </button>
+           
+       
+        
       </form>
     </div>
   );

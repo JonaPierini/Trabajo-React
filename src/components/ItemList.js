@@ -34,16 +34,19 @@ const ItemListContainer = () => {
 
   return (
     <>
-      <div>
-        {productos.length ? (
-          productos.map((product) => (
-            <Item key={product.id} product={product} />
-          ))
-        ) : (
-          <div>Cargando...</div>
-        )}
-      </div>
-    </>
+    <Link to="/categoria/id">Accion</Link>
+    <Link to="/categoria/id">Aventura</Link>
+    <Link to="/categoria/id">Animacion</Link>
+    <div>
+      {productos.length ? (
+        productos.map((product) => (
+          <Item key={product.id} product={product} />
+        ))
+      ) : (
+        <h3>Cargando...</h3>
+      )}
+    </div>
+  </>
   );
 };
 export default ItemListContainer;

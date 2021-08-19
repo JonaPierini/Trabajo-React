@@ -36,16 +36,16 @@ const ItemDetail = ({ producto }) => {
 
       <div>
         <h5>{producto.nombre}</h5>
-        <p>{producto.precio}</p>
+
         <p>
-          {producto.stock ? producto.stock : "No hay stock"}
+        Stock Disponible: {producto.stock ? producto.stock : "No hay stock"}
         </p>
 
         {!confirmaCompra ? (
           <>
             <ItemCount
               initial={1}
-              stock={10}
+              stock={producto.stock}
               contador={contador}
               setContador={setContador}
             />
