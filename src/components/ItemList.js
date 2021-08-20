@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Item from "./Item";
 import { Link, useParams } from "react-router-dom";
 import { database } from "../firebase/config";
+import "../App.css"
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
@@ -34,9 +35,11 @@ const ItemListContainer = () => {
 
   return (
     <>
-    <Link to="/categoria/Accion">Accion</Link>
-    <Link to="/categoria/Aventura">Aventura</Link>
-    <Link to="/categoria/Animacion">Animacion</Link>
+    <div className = "LinkCategoria">
+      <Link to="/categoria/Accion">Accion</Link>
+      <Link to="/categoria/Aventura">Aventura</Link>
+      <Link to="/categoria/Animacion">Animacion</Link>
+    </div>
     <div>
       {productos.length ? (
         productos.map((product) => (

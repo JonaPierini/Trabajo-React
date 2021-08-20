@@ -2,23 +2,26 @@ import React, { useState, useContext } from "react";
 import { CartContext } from "../store/CartContext";
 import { database } from "../firebase/config";
 import firebase from 'firebase/app'
-import { Link } from "react-router-dom";
 
 export default function FormCart() {
   const { cart } = useContext(CartContext);
   console.log(cart);
   const [user, setUser] = useState("");
+  const {clear} = useContext(CartContext);
+  
 
   const tomarDatosUsario = (e) => {
     setUser(e.target.value);
   };
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const ventas = database.collection("ventas");
     const productos = database.collection("peliculas");
-
+    
     ventas
       .add({
         productos: cart,
@@ -33,6 +36,13 @@ export default function FormCart() {
           });
         });
         console.log(refDoc.id);
+        if(cart.length > 0){
+        alert(`Gracias por su compra ${user}`)
+      } else{
+        alert("Carrito vacio")
+      }
+        clear()
+        
       });
   };
 
@@ -41,7 +51,7 @@ export default function FormCart() {
       <h2>Finalizar compra</h2>
       <form onSubmit={handleSubmit}>
         <div>
-          <input
+          <input 
             onChange={tomarDatosUsario}
             value={user}
             name="user"
@@ -49,10 +59,12 @@ export default function FormCart() {
             type="nombre"
           />
         </div>
-         
-        <button type="submit">
-                Comprar
-        </button>
+      
+            <button disabled={user.length === 0 } type = "submit">
+                    Comprar
+            </button>
+      
+       
            
        
         
