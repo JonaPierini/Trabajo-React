@@ -7,6 +7,7 @@ import { CartContext } from "../store/CartContext";
 
 import ItemCount from "./ItemCount";
 
+import '../App.css'
 const ItemDetail = ({ producto }) => {
   //destructuro mi objeto y traigo lo que necesite de mi estado global
   //utilizo useContext y entre parentesis le paso el contexto del cual quiero traer mi data
@@ -45,31 +46,39 @@ const ItemDetail = ({ producto }) => {
         {!confirmaCompra ? (
           <>
             <ItemCount
-              initial={1}
+              initial={0}
               stock={producto.stock}
               contador={contador}
               setContador={setContador}
             />
-            <button
+            <button className = "AgregarAlCarrito"
               onClick={agregarAlCarrito}
+              disabled = {producto.stock === 0}
+              
             >
               Agregar al carrito
             </button>
           </>
         ) : (
           <>
-            <button
+            <button className = "EditarCompra"
               onClick={() => setConfirmaCompra(false)}
             >
               Editar compra
             </button>
-            <Link to="/cart">
-              Ir al carrito
-            </Link>
+            <div className ="IrAlCarrito">
+              <Link to="/cart">
+                Ir al carrito
+              </Link>
+            </div>
+           
           </>
         )}
       </div>
-      <Link to="/">Seguir comprando</Link>
+      <div className = "SeguirComprando">
+          <Link to="/">Seguir comprando</Link>
+      </div>
+     
     </div>
   );
 };

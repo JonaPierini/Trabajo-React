@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { CartContext } from "../store/CartContext";
 import { database } from "../firebase/config";
 import firebase from 'firebase/app'
-
+import '../App.css'
 export default function FormCart() {
   const { cart } = useContext(CartContext);
   console.log(cart);
@@ -47,7 +47,7 @@ export default function FormCart() {
   };
 
   return (
-    <div>
+    <div className = "FormularioFinalizarCompra">
       <h2>Finalizar compra</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -62,12 +62,7 @@ export default function FormCart() {
       
             <button disabled={user.length === 0 } type = "submit">
                     Comprar
-            </button>
-      
-       
-           
-       
-        
+            </button>             
       </form>
     </div>
   );

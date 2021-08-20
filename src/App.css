@@ -1,24 +1,154 @@
+body{
+  margin: 0;
+  box-shadow: 0;
+  padding: 0;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(221, 217, 217);
+}
+
 .App{
   text-align: center;
 }
 
+/* NavBar */
+
 .NavBar {
   background-color: tomato;
+  height: 50px;
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
+
+.NavBar a{
+  text-decoration: none;
+  color: rgb(245, 223, 223); 
+}
+
+/* Item */
+
+.Item{
+  text-align: center;
+}
+.Item a{
+  text-decoration: none;
+  color: black;
+  text-transform: capitalize;
+  
+}
+
+/* LinkCategorias */
+.LinkCategoria {
+  background-color: rgb(238, 199, 93);
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.LinkCategoria a{
+  text-decoration: none;
+  color: rgb(66, 66, 66);
+}
+
+/* Footer */
 
 .Footer {
   background-color: tomato;
-  height: 100vh;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color:  rgb(245, 223, 223); 
+}
+
+/* Carrito */
+
+.Carrito {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  align-items: center;
+  height: 300px;
+}
+
+.Carrito-Volver a{
+  text-decoration: none;
+  color: rgb(66, 66, 66);
+}
+
+
+.Carrito-FinalizarCompra a{
+  text-decoration: none;
+  color: rgb(66, 66, 66);
+  padding: 20px;
   
 }
 
-.LinkCategoria{
-  display: flex;
-  justify-content: space-evenly;
+
+
+.Carrito-VaciarCarrito{
+  border-radius: 10px;
+  width: 140px;
+  padding: 5px;
+  background-color: rgb(216, 32, 32);
+  border-color: rgb(216, 32, 32);
+  font-size: 15px;
+  color: rgb(245, 223, 223);
+}
+
+.Carrito-Item{
+  text-transform: capitalize;
+}
+
+/* Agregar al Carrito */
+
+.AgregarAlCarrito{
+  border-radius: 10px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 140px;
+  color: rgb(57, 51, 51);
+ 
+}
+
+/* Seguir Comprando */
+
+.SeguirComprando{
+  margin-bottom: 10px;
+}
+
+.SeguirComprando a{
+  text-decoration: none;
+}
+
+/* Editar Compra */
+
+.EditarCompra{
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 10px;
+  width: 140px;
+  color: rgb(245, 223, 223);
+  background-color: rgb(216, 32, 32);
+  border-color: rgb(216, 32, 32);
+  
+}
+
+/* Ir Al Carrito */
+
+.IrAlCarrito{
+  margin-bottom: 10px;
+}
+
+.IrAlCarrito a{
+  text-decoration: none;
+}
+
+.FormularioFinalizarCompra{
+  height: 300px;
 }
