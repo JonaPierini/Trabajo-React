@@ -1,19 +1,15 @@
 import React, { useState } from "react";
-//importo hooks para poder usar el estado global
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-//importo el contexto a usar (estado global)
 import { CartContext } from "../store/CartContext";
 
 import ItemCount from "./ItemCount";
 
 import '../App.css'
 const ItemDetail = ({ producto }) => {
-  //destructuro mi objeto y traigo lo que necesite de mi estado global
-  //utilizo useContext y entre parentesis le paso el contexto del cual quiero traer mi data
+ 
   const { cart, addItem, editCart, isInCart } = useContext(CartContext);
 
-  //estado contador
   const [contador, setContador] = useState(1);
 
   const [confirmaCompra, setConfirmaCompra] = useState(false);
@@ -66,7 +62,7 @@ const ItemDetail = ({ producto }) => {
             <button className = "EditarCompra"
               onClick={() => setConfirmaCompra(false)}
             >
-              Editar compra
+              Modificar compra
             </button>
             <div className ="IrAlCarrito">
               <Link to="/cart">

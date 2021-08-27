@@ -8,7 +8,6 @@ const Cart = ({item}) => {
   const {deleteItem} = useContext(CartContext)
  
 
-
   return (
     cartLength > 0 ?
     <div className = "Carrito">
@@ -32,7 +31,7 @@ const Cart = ({item}) => {
             <button disabled = {item === null} className = "Carrito-VaciarCarrito" onClick = {clear}>Vaciar Carrito</button>
       </div>
     </div>
-    : <h3>No hay productos en el Carrito</h3>
+    : <h3>SU CARRITO SE ENCUENTRA VACIO</h3>
   );
 }
 

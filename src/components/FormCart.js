@@ -6,7 +6,6 @@ import '../App.css'
 import { Link } from "react-router-dom";
 export default function FormCart() {
   const { cart } = useContext(CartContext);
-  console.log(cart);
   const [user, setUser] = useState("");
   const [apellido, setApellido] = useState("")
   const[email, setEmail] = useState("")

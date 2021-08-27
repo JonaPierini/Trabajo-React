@@ -65,8 +65,7 @@ const CartContextProvider = ({ children }) => {
   } , [cart]);
 
 
-  //creo un objeto para ir agregando todo lo que quiera tener en mi estado global
-  //puedo pasar array, objetos o funciones
+  //para tener un estado global
   const values = {
     cart,
     setCart,
@@ -80,10 +79,10 @@ const CartContextProvider = ({ children }) => {
      
   };
 
-  //retorno el context provider y en value le asigno los valores de mi estado global
-  //que quiero dale a mi app
+  //retorno el context provider y en value le asigno los valores de mi estado global  que fueron declarados arriba
+ // Ese cartContex.Provider va a englobar toda la app en (app.js)
   return <CartContext.Provider value={values}>{children}</CartContext.Provider>;
 };
 
-//exporto mi context para poder usar en App.js
+
 export default CartContextProvider;
