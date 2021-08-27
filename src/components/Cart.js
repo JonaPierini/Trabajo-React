@@ -2,9 +2,12 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "../store/CartContext";
 import '../App.css'
-const Cart = () => {
-  const { cart } = useContext(CartContext);
+const Cart = ({item}) => {
+  const { cart, total } = useContext(CartContext);
   const {clear} = useContext(CartContext)
+  const {deleteItem} = useContext(CartContext)
+ 
+
 
   return (
     <div className = "Carrito">
@@ -13,16 +16,19 @@ const Cart = () => {
       </div>
       <div className = "Carrito-Item">
         {cart.length
-          ? cart.map((item) => <h2 key={item.id}>{item.nombre} </h2>)
+          ? cart.map((item) => 
+          <div className = "Carrito-Item-Div" key={item.id}>{item.nombre} - ${item.precio}  
+            <button onClick={()=> deleteItem(item.id)}>Borrar Producto</button> 
+          </div>)
           : null}
       </div>
+      <h3>Total: ${total}</h3>
       <div className = "Carrito-FinalizarCompra">
-        <Link to="/compra">
+        <Link className ="Carrito-FinalizarCompraA" to="/compra">
           Finalizar compra
         </Link>
-        <Link to = "/">
-            <button className = "Carrito-VaciarCarrito" onClick = {clear}>Vaciar Carrito</button>
-        </Link>
+        
+            <button disabled = {item === null} className = "Carrito-VaciarCarrito" onClick = {clear}>Vaciar Carrito</button>
       </div>
     </div>
   );

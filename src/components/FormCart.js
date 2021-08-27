@@ -3,21 +3,36 @@ import { CartContext } from "../store/CartContext";
 import { database } from "../firebase/config";
 import firebase from 'firebase/app'
 import '../App.css'
+import { Link } from "react-router-dom";
 export default function FormCart() {
   const { cart } = useContext(CartContext);
   console.log(cart);
   const [user, setUser] = useState("");
+  const [apellido, setApellido] = useState("")
+  const[email, setEmail] = useState("")
   const {clear} = useContext(CartContext);
   
 
-  const tomarDatosUsario = (e) => {
+  const tomarDatosUsarioNombre = (e) => {
     setUser(e.target.value);
+     
+  };
+
+  const tomarDatosUsarioApellido = (e) => {
+    setApellido(e.target.value);
+ 
+  };
+
+  const tomarDatosUsarioEmail = (e) => {
+    setEmail(e.target.value);
+    
   };
 
   
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  
 
     const ventas = database.collection("ventas");
     const productos = database.collection("peliculas");
@@ -25,7 +40,9 @@ export default function FormCart() {
     ventas
       .add({
         productos: cart,
-        user
+        user,
+        apellido,
+        email,
       })
       .then((refDoc) => {
         cart.map((item) => {
@@ -37,9 +54,9 @@ export default function FormCart() {
         });
         console.log(refDoc.id);
         if(cart.length > 0){
-        alert(`Gracias por su compra ${user}`)
+        alert(`GRACIAS POR SU COMPRA: ${user}`)
       } else{
-        alert("Carrito vacio")
+        alert("CARRITO VACIO")
       }
         clear()
         
@@ -52,17 +69,33 @@ export default function FormCart() {
       <form onSubmit={handleSubmit}>
         <div>
           <input 
-            onChange={tomarDatosUsario}
+            onChange={tomarDatosUsarioNombre}
             value={user}
             name="user"
-            placeholder="ingrese su nombre"
+            placeholder="Ingrese su Nombre"
             type="nombre"
           />
+          <input
+             onChange={tomarDatosUsarioApellido}
+             value= {apellido}
+             lastName="apellido"
+             placeholder="Ingrese su Apellido"
+             type="apellido"
+          ></input>
+          <input
+            onChange={tomarDatosUsarioEmail}
+            value={email}
+            email="email"
+            placeholder="Ingrese su Correo"
+            type="email"
+          ></input>
+          
         </div>
       
-            <button disabled={user.length === 0 } type = "submit">
+            <button disabled={user.length === 0 || apellido.length === 0 ||email.length === 0} type = "submit">
                     Comprar
-            </button>             
+            </button>    
+            <Link to = "/"><button>Volver</button></Link>     
       </form>
     </div>
   );

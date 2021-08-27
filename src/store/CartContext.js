@@ -1,5 +1,5 @@
 //importo los elementos necesarios para crear mi estado
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect} from "react";
 
 //creo mi Contexto para ser usado en cualquier componente
 //genero un export const porque lo tengo que importar cada vez que lo quiera usar
@@ -15,6 +15,8 @@ const CartContextProvider = ({ children }) => {
   const addItem = (item) => {
     setCart([...cart, item]);
   };
+
+
 
   //ver si esta en el carrito
   const isInCart = (id) => {
@@ -41,6 +43,18 @@ const CartContextProvider = ({ children }) => {
     setCart(newCart);
   };
 
+
+  // total
+  const [total, setTotal] = useState(0);
+  useEffect(() => {
+    setTotal(cart.reduce((acc, {cantidad, precio}) => {
+        return acc = acc + (precio * cantidad)
+     }, 0))
+    }, [cart])
+
+  
+
+
   //creo un objeto para ir agregando todo lo que quiera tener en mi estado global
   //puedo pasar array, objetos o funciones
   const values = {
@@ -50,7 +64,9 @@ const CartContextProvider = ({ children }) => {
     isInCart,
     editCart,
     clear,
-    deleteItem
+    deleteItem,
+    total,
+     
   };
 
   //retorno el context provider y en value le asigno los valores de mi estado global

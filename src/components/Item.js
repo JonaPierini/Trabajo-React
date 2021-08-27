@@ -5,15 +5,16 @@ import '../App.css'
 const Item = ({ product }) => {
   return (
     <div className = "Item">
-      <article>
+      <article className = "ItemArticle">
           <Link to={`/item/${product.id}`}>
-              <h5>{product.nombre}</h5>
+              <h5 className = "ItemNombre">{product.nombre}</h5>
+          </Link>
               <img
                 src={product.img}
                 alt={product.nombre}
               />
             
-            </Link>
+           
               
       </article>
     </div>

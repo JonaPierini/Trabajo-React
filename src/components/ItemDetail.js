@@ -28,8 +28,9 @@ const ItemDetail = ({ producto }) => {
     }
   };
 
+ 
   return (
-    <div>
+    <div className = "ItemDetail">
       <img
         src={producto.img}
         alt={producto.nombre}
@@ -39,14 +40,15 @@ const ItemDetail = ({ producto }) => {
         <h5>{producto.nombre}</h5>
 
         <p>{producto.detalle}</p>
-        <p>
+        <p className = "StockDisponible">
         Stock Disponible: {producto.stock ? producto.stock : "No hay stock"}
         </p>
+        <p>${producto.precio}</p>
 
         {!confirmaCompra ? (
           <>
             <ItemCount
-              initial={0}
+              initial={1}
               stock={producto.stock}
               contador={contador}
               setContador={setContador}
