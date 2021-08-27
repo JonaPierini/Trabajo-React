@@ -53,6 +53,16 @@ const CartContextProvider = ({ children }) => {
     }, [cart])
 
   
+    // Carrito Vacio
+    const [cartLength, setCartLength] = useState(0);
+    useEffect (() => {
+      let cartAux = 0
+      for (let itemDelCarrito of cart) {
+          cartAux += itemDelCarrito.cantidad 
+      } 
+
+      return setCartLength(cartAux)
+  } , [cart]);
 
 
   //creo un objeto para ir agregando todo lo que quiera tener en mi estado global
@@ -66,6 +76,7 @@ const CartContextProvider = ({ children }) => {
     clear,
     deleteItem,
     total,
+    cartLength,
      
   };
 

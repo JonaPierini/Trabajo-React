@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../store/CartContext";
 import '../App.css'
 const Cart = ({item}) => {
-  const { cart, total } = useContext(CartContext);
+  const { cart, total, cartLength } = useContext(CartContext);
   const {clear} = useContext(CartContext)
   const {deleteItem} = useContext(CartContext)
  
 
 
   return (
+    cartLength > 0 ?
     <div className = "Carrito">
       <div className = "Carrito-Volver">
            <Link to="/">Volver</Link>
@@ -31,6 +32,7 @@ const Cart = ({item}) => {
             <button disabled = {item === null} className = "Carrito-VaciarCarrito" onClick = {clear}>Vaciar Carrito</button>
       </div>
     </div>
+    : <h3>No hay productos en el Carrito</h3>
   );
 }
 
