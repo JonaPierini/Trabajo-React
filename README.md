@@ -10,8 +10,6 @@ Sitio simulador de comercio electrónico para la venta de películas digitales.
 - React Router DOM
 - Firabase' s Firestore
 
-
-
 ## HERRAMIENTAS
 
 - ReactJs.

@@ -36,7 +36,7 @@ const ItemDetail = ({ producto }) => {
         alt={producto.nombre}
       />
 
-      <div>
+      <div className = "ItemDetailProductos">
         <h5>{producto.nombre}</h5>
 
         <p>{producto.detalle}</p>

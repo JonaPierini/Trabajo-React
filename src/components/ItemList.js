@@ -35,11 +35,6 @@ const ItemListContainer = () => {
 
   return (
     <>
-    <div className = "LinkCategoria">
-      <Link to="/categoria/Accion">Accion</Link>
-      <Link to="/categoria/Aventura">Aventura</Link>
-      <Link to="/categoria/Animacion">Animacion</Link>
-    </div>
     <div>
       {productos.length ? (
         productos.map((product) => (

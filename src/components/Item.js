@@ -12,10 +12,10 @@ const Item = ({ product }) => {
               <img
                 src={product.img}
                 alt={product.nombre}
-              />
-            
-           
-              
+              />     
+              <p>{product.detalleCorto}</p>     
+              <p>Precio: ${product.precio}</p>
+
       </article>
     </div>
   );
