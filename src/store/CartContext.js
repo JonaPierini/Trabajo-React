@@ -9,27 +9,26 @@ export const CartContext = createContext();
 const CartContextProvider = ({ children }) => {
   //este useState se va a transformar en mi estado global
   const [cart, setCart] = useState([]);
-  console.log(cart);
   //funciones que modificaran el cart
   //aagrega al carrito
-  const addItem = (item) => {
+  const agregarItem = (item) => {
     setCart([...cart, item]);
   };
 
 
 
   //ver si esta en el carrito
-  const isInCart = (id) => {
-    const verificar = cart.filter((item) => item.id === id);
-    return verificar.length > 0;
+  const estaEnElCart = (id) => {
+    const chequear = cart.filter((item) => item.id === id);
+    return chequear.length > 0;
   };
 
   //funcion para editar la cantidad si ya se encuentra
-  const editCart = (itemEditado) => {
-    const editado = cart.map((item) =>
-      item.id === itemEditado.id ? itemEditado : item
+  const editCart = (itemEditar) => {
+    const editar = cart.map((item) =>
+      item.id === itemEditar.id ? itemEditar : item
     );
-    setCart(editado);
+    setCart(editar);
   };
 
   //funcion para limpiar todo el carrito //
@@ -39,8 +38,8 @@ const CartContextProvider = ({ children }) => {
 
   //funcion para remover un Item del carrito
   const deleteItem = (id) => {
-    const newCart = cart.filter((item) => item.id !== id);
-    setCart(newCart);
+    const nuevoCarrito = cart.filter((item) => item.id !== id);
+    setCart(nuevoCarrito);
   };
 
 
@@ -53,15 +52,23 @@ const CartContextProvider = ({ children }) => {
     }, [cart])
 
   
-    // Carrito Vacio
+     // cantidad de productos
+  const [cantidadProductos, setCantidadProductos] = useState(0);
+  useEffect(() => {
+    setCantidadProductos(cart.reduce((acc, {cantidad}) => {
+        return acc = acc + (cantidad)
+     }, 0))
+    }, [cart])
+
+    // Su Carrito se encuentra Vacio
     const [cartLength, setCartLength] = useState(0);
     useEffect (() => {
-      let cartAux = 0
+      let resultado = 0
       for (let itemDelCarrito of cart) {
-          cartAux += itemDelCarrito.cantidad 
+          resultado += itemDelCarrito.cantidad 
       } 
 
-      return setCartLength(cartAux)
+      return setCartLength(resultado)
   } , [cart]);
 
 
@@ -69,13 +76,14 @@ const CartContextProvider = ({ children }) => {
   const values = {
     cart,
     setCart,
-    addItem,
-    isInCart,
+    agregarItem,
+    estaEnElCart,
     editCart,
     clear,
     deleteItem,
     total,
     cartLength,
+    cantidadProductos,
      
   };
 

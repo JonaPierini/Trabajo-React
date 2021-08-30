@@ -8,19 +8,18 @@ import ItemCount from "./ItemCount";
 import '../App.css'
 const ItemDetail = ({ producto }) => {
  
-  const { cart, addItem, editCart, isInCart } = useContext(CartContext);
+  const {agregarItem, editCart, estaEnElCart } = useContext(CartContext);
 
   const [contador, setContador] = useState(1);
 
   const [confirmaCompra, setConfirmaCompra] = useState(false);
-  console.log(cart);
-
+ 
   const agregarAlCarrito = () => {
     setConfirmaCompra(true);
-    if (isInCart(producto.id)) {
+    if (estaEnElCart(producto.id)) {
       editCart({ ...producto, cantidad: contador });
     } else {
-      addItem({ ...producto, cantidad: contador });
+      agregarItem({ ...producto, cantidad: contador });
     }
   };
 

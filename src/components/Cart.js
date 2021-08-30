@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../store/CartContext";
 import '../App.css'
 const Cart = ({item}) => {
-  const { cart, total, cartLength } = useContext(CartContext);
+  const { cart, total, cartLength, cantidadProductos } = useContext(CartContext);
   const {clear} = useContext(CartContext)
   const {deleteItem} = useContext(CartContext)
  
@@ -17,12 +17,14 @@ const Cart = ({item}) => {
       <div className = "Carrito-Item">
         {cart.length
           ? cart.map((item) => 
-          <div className = "Carrito-Item-Div" key={item.id}>{item.nombre} - ${item.precio}  
+          <div className = "Carrito-Item-Div" key={item.id}>{item.nombre} - ${item.precio} -
             <button onClick={()=> deleteItem(item.id)}>Borrar Producto</button> 
           </div>)
           : null}
       </div>
-      <h3>Total: ${total}</h3>
+      <h3> PELICULAS en el Carrito: {cantidadProductos} </h3>
+      <h3>Total: ${total} </h3>
+
       <div className = "Carrito-FinalizarCompra">
         <Link className ="Carrito-FinalizarCompraA" to="/compra">
           Finalizar compra

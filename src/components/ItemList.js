@@ -1,30 +1,30 @@
 import { useEffect, useState } from "react";
 import Item from "./Item";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { database } from "../firebase/config";
 import "../App.css"
 
 const ItemListContainer = () => {
-  const [productos, setProductos] = useState([]);
+  const [peliculas, setPeliculas] = useState([]);
   const { id: idCategory } = useParams();
 
   useEffect(() => {
-    setProductos([]);
-    const productosDeDB = database.collection("peliculas");
+    setPeliculas([]);
+    const productosDataBase = database.collection("peliculas");
     if (idCategory) {
-      productosDeDB
+      productosDataBase
         .where("categoria", "==", idCategory)
         .get()
         .then((query) =>
-          setProductos(
+          setPeliculas(
             query.docs.map((doc) => {
               return { ...doc.data(), id: doc.id };
             })
           )
         );
     } else {
-      productosDeDB.get().then((query) =>
-        setProductos(
+      productosDataBase.get().then((query) =>
+        setPeliculas(
           query.docs.map((doc) => {
             return { ...doc.data(), id: doc.id };
           })
@@ -36,9 +36,9 @@ const ItemListContainer = () => {
   return (
     <>
     <div>
-      {productos.length ? (
-        productos.map((product) => (
-          <Item key={product.id} product={product} />
+      {peliculas.length ? (
+        peliculas.map((peli) => (
+          <Item key={peli.id} product={peli} />
         ))
       ) : (
         <h3>Cargando...</h3>

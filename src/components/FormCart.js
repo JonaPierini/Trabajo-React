@@ -43,7 +43,7 @@ export default function FormCart() {
         apellido,
         email,
       })
-      .then((refDoc) => {
+      .then((valorPedido) => {
         cart.map((item) => {
           const decrement = item.cantidad;
 
@@ -51,9 +51,8 @@ export default function FormCart() {
             stock: firebase.firestore.FieldValue.increment(-decrement)
           });
         });
-        console.log(refDoc.id);
         if(cart.length > 0){
-        alert(`GRACIAS POR SU COMPRA: ${user}`)
+        alert(`GRACIAS POR SU COMPRA: ${user}, su Número de pedido es ${valorPedido.id}`)
       } else{
         alert("CARRITO VACIO")
       }
@@ -91,7 +90,7 @@ export default function FormCart() {
           
         </div>
       
-            <button disabled={user.length === 0 || apellido.length === 0 ||email.length === 0} type = "submit">
+            <button disabled={user.length === 0 || apellido.length === 0 || email.length === 0} type = "submit">
                     Comprar
             </button>    
             <Link to = "/"><button>Volver</button></Link>     
