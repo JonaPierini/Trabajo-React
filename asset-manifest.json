@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/Trabajo-React/static/css/main.64eaa67f.chunk.css",
-    "main.js": "/Trabajo-React/static/js/main.a74a6ff5.chunk.js",
-    "main.js.map": "/Trabajo-React/static/js/main.a74a6ff5.chunk.js.map",
+    "main.css": "/Trabajo-React/static/css/main.cbccad50.chunk.css",
+    "main.js": "/Trabajo-React/static/js/main.df806f8e.chunk.js",
+    "main.js.map": "/Trabajo-React/static/js/main.df806f8e.chunk.js.map",
     "runtime-main.js": "/Trabajo-React/static/js/runtime-main.bdf5747d.js",
     "runtime-main.js.map": "/Trabajo-React/static/js/runtime-main.bdf5747d.js.map",
     "static/js/2.40c29555.chunk.js": "/Trabajo-React/static/js/2.40c29555.chunk.js",
     "static/js/2.40c29555.chunk.js.map": "/Trabajo-React/static/js/2.40c29555.chunk.js.map",
     "index.html": "/Trabajo-React/index.html",
-    "static/css/main.64eaa67f.chunk.css.map": "/Trabajo-React/static/css/main.64eaa67f.chunk.css.map",
+    "static/css/main.cbccad50.chunk.css.map": "/Trabajo-React/static/css/main.cbccad50.chunk.css.map",
     "static/js/2.40c29555.chunk.js.LICENSE.txt": "/Trabajo-React/static/js/2.40c29555.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.bdf5747d.js",
     "static/js/2.40c29555.chunk.js",
-    "static/css/main.64eaa67f.chunk.css",
-    "static/js/main.a74a6ff5.chunk.js"
+    "static/css/main.cbccad50.chunk.css",
+    "static/js/main.df806f8e.chunk.js"
   ]
 }
